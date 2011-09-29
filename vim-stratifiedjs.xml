@@ -5,7 +5,7 @@
 	<summary>vim stratifiedjs syntax support</summary>
 	<publish xmlns="http://gfxmonk.net/dist/0install" mode="third-party"/>
 	<description>
-# Vim syntax support for [straitified javascript][sjs]
+# Vim syntax support for [stratified javascript][sjs]
 
 To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [pathogen][], now's a good time to start - but you can always install manually if you're stubborn.
 
@@ -15,7 +15,7 @@ To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [
 	<homepage>http://gfxmonk.github.com/vim-stratifiedjs/</homepage>
 	<rich-description xmlns="http://gfxmonk.net/dist/0install">
 		<div xmlns="http://www.w3.org/1999/xhtml">
-			<h1 id="vim-syntax-support-for-straitified-javascript">Vim syntax support for <a href="http://onilabs.com/stratifiedjs">straitified javascript</a></h1>
+			<h1 id="vim-syntax-support-for-stratified-javascript">Vim syntax support for <a href="http://onilabs.com/stratifiedjs">stratified javascript</a></h1>
 			<p>To use with <a href="https://github.com/tpope/vim-pathogen">pathogen</a>, copy contents into <code>~/.vim/bundle</code>. If you don't use <a href="https://github.com/tpope/vim-pathogen">pathogen</a>, now's a good time to start - but you can always install manually if you're stubborn.</p>
 		</div>
 	</rich-description>

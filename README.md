@@ -1,4 +1,4 @@
-# Vim syntax support for [straitified javascript][sjs]
+# Vim syntax support for [stratified javascript][sjs]
 
 To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [pathogen][], now's a good time to start - but you can always install manually if you're stubborn.
 
