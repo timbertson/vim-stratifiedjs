@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface" uri="http://gfxmonk.net/dist/0install/vim-stratifiedjs.xml">
+	<name>vim-stratifiedjs</name>
+	<summary>vim stratifiedjs syntax support</summary>
+	<publish xmlns="http://gfxmonk.net/dist/0install" mode="third-party"/>
+	<description>
+# Vim syntax support for [straitified javascript][sjs]
+
+To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [pathogen][], now's a good time to start - but you can always install manually if you're stubborn.
+
+[pathogen]: https://github.com/tpope/vim-pathogen
+[sjs]:      http://onilabs.com/stratifiedjs
+	</description>
+	<homepage>http://gfxmonk.github.com/vim-stratifiedjs/</homepage>
+	<rich-description xmlns="http://gfxmonk.net/dist/0install">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h1 id="vim-syntax-support-for-straitified-javascript">Vim syntax support for <a href="http://onilabs.com/stratifiedjs">straitified javascript</a></h1>
+			<p>To use with <a href="https://github.com/tpope/vim-pathogen">pathogen</a>, copy contents into <code>~/.vim/bundle</code>. If you don't use <a href="https://github.com/tpope/vim-pathogen">pathogen</a>, now's a good time to start - but you can always install manually if you're stubborn.</p>
+		</div>
+	</rich-description>
+	<group>
+		<environment insert="" mode="prepend" name="VIMPATH"/>
+		<implementation id="sha1new=4a876f0b6b614eb912c52230f14651e1515d74ce" released="2011-09-29" version="0.1">
+			<manifest-digest sha256="dbcb0fe73f557ba2afa8f1330219ff207a21c990389e5b8ddb035137485b7125"/>
+			<archive href="http://gfxmonk.net/dist/0install/vim-stratifiedjs/vim-stratifiedjs-0.1.tgz" size="2059"/>
+		</implementation>
+	</group>
+</interface>
