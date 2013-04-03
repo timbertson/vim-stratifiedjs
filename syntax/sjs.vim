@@ -53,7 +53,9 @@ syn keyword sjsException		and or retract
 syn keyword sjsGlobal		waitfor spawn require hold
 syn keyword sjsStatement		using
 syn region  sjsStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"+	contains=sjsSpecial,@htmlPreproc
+syn region  sjsStringB	       start=+`+  skip=+\\\\\|\\`+  end=+`+	contains=sjsSpecial,@htmlPreproc
 syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="#{" end="}" contained contains=ALL containedIn=sjsStringD
+syn region  sjsQuasiInterpolation	matchgroup=sjsInterpolationDelimiter start="${" end="}" contained contains=ALL containedIn=sjsStringB
 
 if exists("sjs_fold")
     syn match	sjsFunction	"\<function\>"
@@ -93,6 +95,7 @@ if version >= 508 || !exists("did_sjs_syn_inits")
   HiLink sjsSpecial		Special
   HiLink sjsStringS		String
   HiLink sjsStringD		String
+  HiLink sjsStringB		String
   HiLink sjsCharacter		Character
   HiLink sjsSpecialCharacter	sjsSpecial
   HiLink sjsNumber		sjsValue
