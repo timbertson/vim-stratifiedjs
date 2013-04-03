@@ -37,5 +37,9 @@ To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [
 			<manifest-digest sha256="91f06585bf3bb3c107473406773bccedf4bbd483b61901e01e70928a35be85ab"/>
 			<archive href="http://gfxmonk.net/dist/0install/vim-stratifiedjs/vim-stratifiedjs-0.1.3.tgz" size="2711"/>
 		</implementation>
+		<implementation id="sha1new=11777cd595fbc4ee482bce1c3e56d37940bcb1c9" released="2013-04-03" version="0.1.4">
+			<manifest-digest sha256new="C3TJBLMJODVOIHT63EFDA2FOAQTJXV2JYEOL4TMTGFDVWEH4OXBQ"/>
+			<archive href="http://gfxmonk.net/dist/0install/vim-stratifiedjs/vim-stratifiedjs-0.1.4.tgz" size="2758"/>
+		</implementation>
 	</group>
 </interface>
