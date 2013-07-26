@@ -49,13 +49,17 @@ syn keyword sjsDeprecated	escape unescape
 syn keyword sjsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
 "NOTE: these are the _only_ SJS specific additions / overrides:
+syn region sjsParenBlock	start="(" end=")" matchgroup=sjsParens contains=TOP,sjsParens
 syn keyword sjsException		and or retract
 syn keyword sjsGlobal		waitfor spawn require hold
 syn keyword sjsStatement		using
-syn region  sjsStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"+	contains=sjsSpecial,@htmlPreproc
-syn region  sjsStringB	       start=+`+  skip=+\\\\\|\\`+  end=+`+	contains=sjsSpecial,@htmlPreproc
-syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="#{" end="}" contained contains=ALL containedIn=sjsStringD
-syn region  sjsQuasiInterpolation	matchgroup=sjsInterpolationDelimiter start="${" end="}" contained contains=ALL containedIn=sjsStringB
+syn region  sjsStringD	       start=+"+  skip=+\\\\\|\\"\\#+  end=+"+	contains=sjsSpecial,@htmlPreproc
+syn region  sjsStringB	       start=+`+  skip=+\\\\\|\\`\\$+  end=+`+	contains=sjsSpecial,@htmlPreproc,sjsInterpolationDelimiter
+syn region  sjsStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'+	contains=sjsSpecial,@htmlPreproc
+syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="#{" end="}" contained contains=TOP containedIn=sjsStringD
+syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="${" end="}" contained contains=TOP containedIn=sjsStringB
+syn match  sjsInterpolationDelimiter	contained nextgroup=sjsNakedQuasiValue  "\$\ze[^{]"
+syn match  sjsNakedQuasiValue	"[a-zA-Z0-9]\+" contained nextgroup=sjsParenBlock
 
 if exists("sjs_fold")
     syn match	sjsFunction	"\<function\>"
@@ -69,8 +73,8 @@ if exists("sjs_fold")
 else
     syn keyword sjsFunction	function
     syn match	sjsBraces	   "[{}\[\]]"
-    syn match	sjsParens	   "[()]"
 endif
+syn match	sjsParens	   "[()]"
 
 syn sync fromstart
 syn sync maxlines=100
@@ -82,13 +86,13 @@ endif
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_sjs_syn_inits")
-  if version < 508
-    let did_sjs_syn_inits = 1
+" if version >= 508 || !exists("did_sjs_syn_inits")
+"   if version < 508
+"     let did_sjs_syn_inits = 1
     command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+  " else
+  "   command -nargs=+ HiLink hi def link <args>
+  " endif
   HiLink sjsComment		Comment
   HiLink sjsLineComment		Comment
   HiLink sjsCommentTodo		Todo
@@ -107,6 +111,7 @@ if version >= 508 || !exists("did_sjs_syn_inits")
   HiLink sjsStatement		Statement
   HiLink sjsFunction		Function
   HiLink sjsBraces		Function
+  HiLink sjsInterpolationDelimiter		sjsBraces
   HiLink sjsError		Error
   HiLink sjsParenError		sjsError
   HiLink sjsNull			Keyword
@@ -125,7 +130,7 @@ if version >= 508 || !exists("did_sjs_syn_inits")
   HiLink sjsConstant		Label
 
   delcommand HiLink
-endif
+" endif
 
 let b:current_syntax = "sjs"
 if main_syntax == 'sjs'
