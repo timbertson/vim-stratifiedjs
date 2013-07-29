@@ -29,7 +29,7 @@ syn region  sjsStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=s
 
 syn match   sjsSpecialCharacter "'\\.'"
 syn match   sjsNumber	       "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
-syn region  sjsRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
+syn region  sjsRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,3\}\s*$+ end=+/[gim]\{0,3\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
 syn keyword sjsConditional	if else switch
 syn keyword sjsRepeat		while for do in
