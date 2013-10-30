@@ -40,6 +40,7 @@ syn keyword sjsStatement		return with
 syn keyword sjsBoolean		true false
 syn keyword sjsNull		null undefined
 syn keyword sjsIdentifier	arguments this var let
+syn match sjsGlobal	"@[a-zA-Z_]*"
 syn keyword sjsLabel		case default
 syn keyword sjsException		try catch finally throw
 syn keyword sjsMessage		alert confirm prompt status
@@ -49,32 +50,26 @@ syn keyword sjsDeprecated	escape unescape
 syn keyword sjsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
 "NOTE: these are the _only_ SJS specific additions / overrides:
-syn region sjsParenBlock	start="(" end=")" matchgroup=sjsParens contains=TOP,sjsParens
-syn keyword sjsException		and or retract
+syn region sjsParenBlock	matchgroup=sjsBraces start="(" end=")" contains=TOP
+syn region sjsBlock		matchgroup=sjsBraces start="{" end="}" contains=TOP
+syn region sjsBlock		matchgroup=sjsBraces start="\[" end="\]" contains=TOP
+syn keyword sjsException	and or retract
 syn keyword sjsGlobal		waitfor spawn require hold
-syn keyword sjsStatement		using
-syn region  sjsStringD	       start=+"+  skip=+\\\\\|\\"\\#+  end=+"+	contains=sjsSpecial,@htmlPreproc
-syn region  sjsStringB	       start=+`+  skip=+\\\\\|\\`\\$+  end=+`+	contains=sjsSpecial,@htmlPreproc,sjsInterpolationDelimiter
-syn region  sjsStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'+	contains=sjsSpecial,@htmlPreproc
+syn keyword sjsStatement	using
+syn region  sjsStringD		start=+"+  skip=+\\\\\|\\"\\#+  end=+"+	contains=sjsSpecial,@htmlPreproc
+syn region  sjsStringB		start=+`+  skip=+\\\\\|\\`\\$+  end=+`+	contains=sjsSpecial,@htmlPreproc,sjsInterpolationDelimiter
+syn region  sjsStringS		start=+'+  skip=+\\\\\|\\'+  end=+'+	contains=sjsSpecial,@htmlPreproc
 syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="#{" end="}" contained contains=TOP containedIn=sjsStringD
 syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="${" end="}" contained contains=TOP containedIn=sjsStringB
 syn match  sjsInterpolationDelimiter	contained nextgroup=sjsNakedQuasiValue  "\$\ze[^{]"
-syn match  sjsNakedQuasiValue	"[a-zA-Z0-9]\+" contained nextgroup=sjsParenBlock
+syn match  sjsNakedQuasiValue	"[@a-zA-Z0-9]\+" contained nextgroup=sjsParenBlock
 
-if exists("sjs_fold")
-    syn match	sjsFunction	"\<function\>"
-    syn region	sjsFunctionFold	start="\<function\>.*[^};]$" end="^\z1}.*$" transparent fold keepend
+syn keyword sjsFunction	function
 
-    syn sync match sjsSync	grouphere sjsFunctionFold "\<function\>"
-    syn sync match sjsSync	grouphere NONE "^}"
-
-    setlocal foldmethod=syntax
-    setlocal foldtext=getline(v:foldstart)
-else
-    syn keyword sjsFunction	function
-    syn match	sjsBraces	   "[{}\[\]]"
-endif
-syn match	sjsParens	   "[()]"
+"uncomment for debugging:
+"map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+"\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+"\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 syn sync fromstart
 syn sync maxlines=100
@@ -119,6 +114,7 @@ endif
   HiLink sjsRegexpString		String
 
   HiLink sjsIdentifier		Identifier
+  HiLink sjsAltnsIdentifier		Special
   HiLink sjsLabel		Label
   HiLink sjsException		Exception
   HiLink sjsMessage		Keyword
