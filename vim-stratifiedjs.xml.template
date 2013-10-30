@@ -22,7 +22,7 @@ To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [
 	<feed-for interface="http://gfxmonk.net/dist/0install/vim-stratifiedjs.xml"/>
 	<group>
 		<environment insert="" mode="prepend" name="VIMPATH"/>
-		<implementation released="{date}" version="{version}">
+		<implementation version="{version}">
 			<manifest-digest/>
 			<archive href="{archive}"/>
 		</implementation>
