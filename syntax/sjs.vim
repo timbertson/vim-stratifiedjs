@@ -40,7 +40,7 @@ syn keyword sjsStatement		return with
 syn keyword sjsBoolean		true false
 syn keyword sjsNull		null undefined
 syn keyword sjsIdentifier	arguments this var let
-syn match sjsGlobal	"@[a-zA-Z_]*"
+syn match sjsAltnsIdentifier	"@[a-zA-Z_0-9]*"
 syn keyword sjsLabel		case default
 syn keyword sjsException		try catch finally throw
 syn keyword sjsMessage		alert confirm prompt status
@@ -62,7 +62,8 @@ syn region  sjsStringS		start=+'+  skip=+\\\\\|\\'+  end=+'+	contains=sjsSpecial
 syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="#{" end="}" contained contains=TOP containedIn=sjsStringD
 syn region  sjsInterpolation	matchgroup=sjsInterpolationDelimiter start="${" end="}" contained contains=TOP containedIn=sjsStringB
 syn match  sjsInterpolationDelimiter	contained nextgroup=sjsNakedQuasiValue  "\$\ze[^{]"
-syn match  sjsNakedQuasiValue	"[@a-zA-Z0-9]\+" contained nextgroup=sjsParenBlock
+syn region  sjsNakedQuasiValue	start="[a-zA-Z0-9_]" end="[a-zA-Z0-9_]*" contained nextgroup=sjsParenBlock
+syn region  sjsNakedQuasiValue	matchgroup=sjsAltnsIdentifier start="@" end="[a-zA-Z0-9_]*" contained nextgroup=sjsParenBlock
 
 syn keyword sjsFunction	function
 
@@ -114,7 +115,7 @@ endif
   HiLink sjsRegexpString		String
 
   HiLink sjsIdentifier		Identifier
-  HiLink sjsAltnsIdentifier		Special
+  HiLink sjsAltnsIdentifier	sjsGlobal
   HiLink sjsLabel		Label
   HiLink sjsException		Exception
   HiLink sjsMessage		Keyword
