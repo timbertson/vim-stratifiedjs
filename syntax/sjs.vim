@@ -36,7 +36,7 @@ syn keyword sjsRepeat		while for do in
 syn keyword sjsBranch		break continue
 syn keyword sjsOperator		new delete instanceof typeof
 syn keyword sjsType		Array Boolean Date Function Number Object String RegExp
-syn keyword sjsStatement		return with
+syn keyword sjsStatement	return with using
 syn keyword sjsBoolean		true false
 syn keyword sjsNull		null undefined
 syn keyword sjsIdentifier	arguments this var let
@@ -44,12 +44,9 @@ syn match sjsAltnsIdentifier	"@[a-zA-Z_0-9]*"
 syn keyword sjsLabel		case default
 syn keyword sjsException		try catch finally throw
 syn keyword sjsMessage		alert confirm prompt status
-syn keyword sjsGlobal		self window top parent
-syn keyword sjsMember		document event location 
-syn keyword sjsDeprecated	escape unescape
-syn keyword sjsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
+syn keyword sjsGlobal		window
+syn keyword sjsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile
 
-"NOTE: these are the _only_ SJS specific additions / overrides:
 syn region sjsParenBlock	matchgroup=sjsBraces start="(" end=")" contains=TOP
 syn region sjsBlock		matchgroup=sjsBraces start="{" end="}" contains=TOP
 syn region sjsBlock		matchgroup=sjsBraces start="\[" end="\]" contains=TOP
@@ -120,8 +117,6 @@ endif
   HiLink sjsException		Exception
   HiLink sjsMessage		Keyword
   HiLink sjsGlobal		Keyword
-  HiLink sjsMember		Keyword
-  HiLink sjsDeprecated		Exception 
   HiLink sjsReserved		Keyword
   HiLink sjsDebug		Debug
   HiLink sjsConstant		Label

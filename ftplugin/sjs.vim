@@ -26,12 +26,6 @@ setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 
 setlocal commentstring=//%s
 
-" Change the :browse e filter to primarily show Java-related files.
-if has("gui_win32")
-    let  b:browsefilter="Javascript Files (*.js)\t*.js\n" .
-		\	"All Files (*.*)\t*.*\n"
-endif
-       
 let b:undo_ftplugin = "setl fo< ofu< com< cms<" 
 
 let &cpo = s:cpo_save
