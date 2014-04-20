@@ -1,6 +1,6 @@
-# Vim syntax support for [stratified javascript][sjs]
+# Moved
 
-To use with [pathogen][], copy contents into `~/.vim/bundle`. If you don't use [pathogen][], now's a good time to start - but you can always install manually if you're stubborn.
+Vim support for StratifiedJS is now part of the official [stratifiedjs][]
+repository (in the `vim/` folder).
 
-[pathogen]: https://github.com/tpope/vim-pathogen
-[sjs]:      http://onilabs.com/stratifiedjs
+[stratifiedjs]: https://github.com/onilabs/stratifiedjs/
